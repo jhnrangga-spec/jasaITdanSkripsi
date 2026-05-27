@@ -1,678 +1,1227 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JasaIT & Skripsi — Aplikasi Web & Bantu Skripsi Profesional</title>
-  <meta name="description" content="Jasa pembuatan aplikasi web, landing page, dan bantu skripsi/tugas akhir. Profesional, cepat, harga terjangkau." />
+  <meta name="description" content="Jasa pembuatan aplikasi web profesional dan bantuan skripsi / tugas akhir berkualitas. Harga terjangkau, hasil memuaskan, pengerjaan cepat." />
+  <meta name="keywords" content="jasa web, jasa skripsi, jasa aplikasi web, bantu skripsi, jasa IT, landing page, pembuatan website" />
+  <title>JasaIT &amp; Skripsi — Solusi IT &amp; Akademik Profesional</title>
+
+  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50:  '#EFF6FF',
+              100: '#DBEAFE',
+              200: '#BFDBFE',
+              300: '#93C5FD',
+              400: '#60A5FA',
+              500: '#3B82F6',
+              600: '#2563EB',
+              700: '#1D4ED8',
+              800: '#1E40AF',
+              900: '#1E3A8A',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome 6 via CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/style.css" />
 </head>
-<body class="font-sans text-gray-800 bg-white">
+<body class="font-sans antialiased bg-white text-gray-800">
 
-  <!-- ===== NAVBAR ===== -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md transition-all duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
+  <!-- =====================================================
+       FLOATING WHATSAPP BUTTON
+  ===================================================== -->
+  <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20JasaIT%20%26%20Skripsi.%20Boleh%20konsultasi%3F"
+     target="_blank" rel="noopener noreferrer"
+     class="whatsapp-float" aria-label="Chat WhatsApp">
+    <span class="whatsapp-tooltip">Chat Sekarang!</span>
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- =====================================================
+       NAVBAR
+  ===================================================== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-2 group">
-          <div class="w-9 h-9 bg-gradient-to-br from-blue-700 to-blue-500 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-blue-300 transition-shadow duration-300">
+        <a href="#hero" class="flex items-center gap-2.5 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-400 to-blue-800 flex items-center justify-center shadow-lg transition-shadow duration-300 group-hover:shadow-blue-400/50">
             <i class="fa-solid fa-code text-white text-sm"></i>
           </div>
-          <span class="font-bold text-lg text-blue-800">JasaIT<span class="text-blue-500">&</span>Skripsi</span>
+          <span id="logo-text" class="text-lg font-extrabold text-white drop-shadow tracking-tight transition-colors duration-300">
+            JasaIT <span class="text-blue-300 font-black">&amp;</span> Skripsi
+          </span>
         </a>
 
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex items-center gap-7">
-          <a href="#layanan" class="nav-link text-gray-600 hover:text-blue-700 font-medium text-sm">Layanan</a>
-          <a href="#harga" class="nav-link text-gray-600 hover:text-blue-700 font-medium text-sm">Harga</a>
-          <a href="#portofolio" class="nav-link text-gray-600 hover:text-blue-700 font-medium text-sm">Portofolio</a>
-          <a href="#kontak" class="nav-link text-gray-600 hover:text-blue-700 font-medium text-sm">Kontak</a>
-          <a href="#kontak" class="ml-2 bg-blue-700 hover:bg-blue-800 text-white text-sm font-semibold px-5 py-2 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-blue-300 hover:-translate-y-0.5">
-            Pesan Sekarang
+        <!-- Desktop Nav Links -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#layanan"    class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors duration-300">Layanan</a>
+          <a href="#harga"      class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors duration-300">Harga</a>
+          <a href="#portofolio" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors duration-300">Portofolio</a>
+          <a href="#kontak"     class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors duration-300">Kontak</a>
+          <a href="#kontak"
+             class="ml-3 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-primary-800 font-bold text-sm shadow-xl hover:bg-blue-50 hover:shadow-2xl transition-all duration-300 hover:-translate-y-0.5">
+            <i class="fa-solid fa-rocket text-primary-600 text-xs"></i> Pesan Sekarang
           </a>
         </div>
 
-        <!-- Hamburger -->
-        <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-blue-50 transition-colors" aria-label="Menu">
-          <span class="w-5 h-0.5 bg-gray-700 rounded transition-all duration-300 origin-center" id="ham-1"></span>
-          <span class="w-5 h-0.5 bg-gray-700 rounded transition-all duration-300" id="ham-2"></span>
-          <span class="w-5 h-0.5 bg-gray-700 rounded transition-all duration-300 origin-center" id="ham-3"></span>
+        <!-- Hamburger (Mobile) -->
+        <button id="hamburger" class="md:hidden p-2 rounded-lg focus:outline-none" aria-label="Toggle menu">
+          <span id="ham-1" class="block w-6 h-0.5 bg-white rounded mb-1.5 transition-all duration-300 origin-center"></span>
+          <span id="ham-2" class="block w-6 h-0.5 bg-white rounded mb-1.5 transition-all duration-300"></span>
+          <span id="ham-3" class="block w-6 h-0.5 bg-white rounded transition-all duration-300 origin-center"></span>
         </button>
       </div>
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100">
-      <div class="px-4 py-3 flex flex-col gap-1">
-        <a href="#layanan" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-colors">Layanan</a>
-        <a href="#harga" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-colors">Harga</a>
-        <a href="#portofolio" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-colors">Portofolio</a>
-        <a href="#kontak" class="mobile-nav-link block px-3 py-2.5 rounded-lg text-gray-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-colors">Kontak</a>
-        <a href="#kontak" class="mt-2 text-center bg-blue-700 text-white font-semibold px-4 py-2.5 rounded-full hover:bg-blue-800 transition-colors">Pesan Sekarang</a>
+    <div id="mobile-menu" class="md:hidden bg-white shadow-2xl">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-1">
+        <a href="#layanan"    class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-blue-50 hover:text-primary-800 transition-colors">
+          <i class="fa-solid fa-layer-group text-primary-500 w-4 text-sm"></i> Layanan
+        </a>
+        <a href="#harga"      class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-blue-50 hover:text-primary-800 transition-colors">
+          <i class="fa-solid fa-tag text-primary-500 w-4 text-sm"></i> Harga
+        </a>
+        <a href="#portofolio" class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-blue-50 hover:text-primary-800 transition-colors">
+          <i class="fa-solid fa-briefcase text-primary-500 w-4 text-sm"></i> Portofolio
+        </a>
+        <a href="#kontak"     class="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 font-medium hover:bg-blue-50 hover:text-primary-800 transition-colors">
+          <i class="fa-solid fa-envelope text-primary-500 w-4 text-sm"></i> Kontak
+        </a>
+        <div class="pt-2 mt-1 border-t border-gray-100">
+          <a href="#kontak"
+             class="mobile-nav-link block w-full text-center px-4 py-3.5 rounded-xl bg-gradient-to-r from-primary-800 to-primary-600 text-white font-bold text-sm shadow-lg hover:opacity-90 transition-opacity">
+            <i class="fa-solid fa-rocket mr-2"></i> Pesan Sekarang
+          </a>
+        </div>
       </div>
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero-gradient min-h-screen flex items-center pt-16 relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 relative z-10">
-      <div class="max-w-3xl">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 hero-badge rounded-full px-4 py-2 mb-6 animate-fade-in">
-          <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-          <span class="text-white/90 text-sm font-medium">Tersedia untuk proyek baru</span>
+  <!-- =====================================================
+       HERO SECTION
+  ===================================================== -->
+  <section id="hero" class="hero-gradient min-h-screen flex flex-col justify-center pt-16 pb-32 relative overflow-hidden">
+    <!-- Decorative glows -->
+    <div class="absolute top-24 right-8 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-16 left-8 w-96 h-96 bg-blue-300/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Text Column -->
+        <div class="text-white">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2.5 hero-badge px-4 py-2 rounded-full text-sm font-semibold text-blue-100 mb-7 animate-fade-in">
+            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0"></span>
+            Tersedia &amp; Siap Mengerjakan Proyek Anda
+          </div>
+
+          <!-- Headline -->
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6 animate-fade-in-up delay-100">
+            Wujudkan Ide Digital<br />
+            &amp; <span class="text-blue-200">Selesaikan Skripsi</span><br />
+            Bersama Ahlinya
+          </h1>
+
+          <!-- Sub-headline -->
+          <p class="text-blue-100 text-lg md:text-xl leading-relaxed mb-10 max-w-lg animate-fade-in-up delay-200">
+            Dari landing page sederhana hingga sistem web enterprise — kami kerjakan dengan cepat, profesional, harga bersahabat, dan hasil yang memuaskan.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 mb-14 animate-fade-in-up delay-300">
+            <a href="#kontak"
+               class="btn-primary inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl font-bold text-primary-800 text-base shadow-2xl">
+              <i class="fa-solid fa-rocket"></i> Pesan Sekarang
+            </a>
+            <a href="#portofolio"
+               class="btn-secondary inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl font-bold text-white text-base backdrop-blur-sm">
+              <i class="fa-solid fa-eye"></i> Lihat Portofolio
+            </a>
+          </div>
+
+          <!-- Trust Icons -->
+          <div class="flex flex-wrap gap-5 animate-fade-in-up delay-400">
+            <div class="flex items-center gap-2 text-blue-200 text-sm font-medium">
+              <i class="fa-solid fa-circle-check text-green-400 text-base"></i>
+              100+ Proyek Selesai
+            </div>
+            <div class="flex items-center gap-2 text-blue-200 text-sm font-medium">
+              <i class="fa-solid fa-circle-check text-green-400 text-base"></i>
+              Klien Puas 98%
+            </div>
+            <div class="flex items-center gap-2 text-blue-200 text-sm font-medium">
+              <i class="fa-solid fa-circle-check text-green-400 text-base"></i>
+              Revisi Gratis
+            </div>
+          </div>
         </div>
 
-        <!-- Headline -->
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6 animate-fade-in-up delay-100">
-          Solusi <span class="text-yellow-300">Aplikasi Web</span> &<br />
-          <span class="text-blue-200">Skripsi</span> Terpercaya
-        </h1>
+        <!-- Visual Card Column -->
+        <div class="hidden lg:flex justify-center items-center">
+          <div class="relative animate-float">
+            <!-- Main dashboard card -->
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 w-80 shadow-2xl">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <i class="fa-solid fa-laptop-code text-white text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-white font-bold">Project Baru</p>
+                  <p class="text-blue-200 text-xs">Sedang diproses...</p>
+                </div>
+                <span class="ml-auto w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 bg-white/10 rounded-xl p-3">
+                  <i class="fa-solid fa-check-circle text-green-400 text-sm"></i>
+                  <span class="text-white/80 text-sm">Desain UI/UX</span>
+                  <span class="ml-auto text-green-400 text-xs font-bold">Selesai</span>
+                </div>
+                <div class="flex items-center gap-3 bg-white/10 rounded-xl p-3">
+                  <i class="fa-solid fa-spinner fa-spin text-yellow-300 text-sm"></i>
+                  <span class="text-white/80 text-sm">Backend API</span>
+                  <span class="ml-auto text-yellow-300 text-xs font-bold">75%</span>
+                </div>
+                <div class="flex items-center gap-3 bg-white/10 rounded-xl p-3">
+                  <i class="fa-regular fa-circle text-white/30 text-sm"></i>
+                  <span class="text-white/40 text-sm">Testing &amp; Deploy</span>
+                  <span class="ml-auto text-white/40 text-xs font-bold">Segera</span>
+                </div>
+              </div>
+              <div class="mt-5 pt-4 border-t border-white/15">
+                <div class="flex justify-between text-white/70 text-xs mb-2">
+                  <span>Progress</span>
+                  <span class="text-white font-bold">75%</span>
+                </div>
+                <div class="h-2 bg-white/20 rounded-full overflow-hidden">
+                  <div class="h-full w-3/4 bg-gradient-to-r from-blue-300 to-cyan-300 rounded-full"></div>
+                </div>
+              </div>
+            </div>
 
-        <!-- Sub-headline -->
-        <p class="text-blue-100 text-lg md:text-xl leading-relaxed mb-10 max-w-xl animate-fade-in-up delay-200">
-          Dari landing page sederhana hingga sistem web lengkap — kami kerjakan dengan cepat, profesional, dan harga yang bersahabat untuk mahasiswa dan pelaku bisnis.
-        </p>
+            <!-- Rating badge -->
+            <div class="absolute -top-6 -right-6 bg-white rounded-2xl shadow-2xl p-4 flex items-center gap-2.5 border border-yellow-100">
+              <div class="w-9 h-9 bg-yellow-100 rounded-xl flex items-center justify-center">
+                <i class="fa-solid fa-star text-yellow-500 text-sm"></i>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-gray-500 leading-none">Rating</p>
+                <p class="text-lg font-extrabold text-primary-800 leading-tight">5.0 / 5.0</p>
+              </div>
+            </div>
 
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-300">
-          <a href="#kontak" class="btn-primary inline-flex items-center justify-center gap-2 font-bold px-8 py-4 rounded-full text-blue-800 shadow-xl">
-            <i class="fa-solid fa-rocket"></i>
-            Pesan Sekarang
-          </a>
-          <a href="#portofolio" class="btn-secondary inline-flex items-center justify-center gap-2 font-semibold px-8 py-4 rounded-full">
-            <i class="fa-solid fa-folder-open"></i>
-            Lihat Portofolio
-          </a>
+            <!-- Delivery badge -->
+            <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-2xl p-4 flex items-center gap-2.5 border border-green-100">
+              <div class="w-9 h-9 bg-green-100 rounded-xl flex items-center justify-center">
+                <i class="fa-solid fa-bolt text-green-600 text-sm"></i>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-gray-500 leading-none">Rata-rata Selesai</p>
+                <p class="text-lg font-extrabold text-green-700 leading-tight">3–7 Hari</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Quick stats -->
-        <div class="flex flex-wrap gap-6 mt-14 animate-fade-in-up delay-400">
-          <div class="text-center">
-            <div class="text-3xl font-extrabold text-white">50+</div>
-            <div class="text-blue-200 text-sm mt-0.5">Proyek Selesai</div>
-          </div>
-          <div class="w-px bg-white/20 self-stretch"></div>
-          <div class="text-center">
-            <div class="text-3xl font-extrabold text-white">98%</div>
-            <div class="text-blue-200 text-sm mt-0.5">Klien Puas</div>
-          </div>
-          <div class="w-px bg-white/20 self-stretch"></div>
-          <div class="text-center">
-            <div class="text-3xl font-extrabold text-white">3 Hari</div>
-            <div class="text-blue-200 text-sm mt-0.5">Pengerjaan Tercepat</div>
-          </div>
+      <!-- Stats Row -->
+      <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div class="stat-card text-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 reveal">
+          <p class="text-3xl font-extrabold text-white mb-1">100+</p>
+          <p class="text-blue-200 text-sm">Proyek Selesai</p>
+        </div>
+        <div class="stat-card text-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 reveal delay-100">
+          <p class="text-3xl font-extrabold text-white mb-1">80+</p>
+          <p class="text-blue-200 text-sm">Klien Puas</p>
+        </div>
+        <div class="stat-card text-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 reveal delay-200">
+          <p class="text-3xl font-extrabold text-white mb-1">50+</p>
+          <p class="text-blue-200 text-sm">Skripsi Lulus</p>
+        </div>
+        <div class="stat-card text-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 reveal delay-300">
+          <p class="text-3xl font-extrabold text-white mb-1">3 Thn</p>
+          <p class="text-blue-200 text-sm">Pengalaman</p>
         </div>
       </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/60 text-xs animate-bounce">
-      <span>Scroll</span>
-      <i class="fa-solid fa-chevron-down"></i>
+    <!-- Wave divider -->
+    <div class="absolute bottom-0 left-0 right-0 pointer-events-none">
+      <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full">
+        <path d="M0,80 C360,0 1080,0 1440,80 L1440,80 L0,80 Z" fill="white"/>
+      </svg>
     </div>
   </section>
 
-  <!-- ===== LAYANAN ===== -->
-  <section id="layanan" class="py-20 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- =====================================================
+       LAYANAN SECTION
+  ===================================================== -->
+  <section id="layanan" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
       <!-- Heading -->
-      <div class="text-center mb-14 reveal">
-        <span class="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Apa Yang Kami Tawarkan</span>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Layanan Kami</h2>
-        <div class="section-divider mb-4"></div>
-        <p class="text-gray-500 max-w-xl mx-auto">Kami hadir untuk membantu kebutuhan teknologi dan akademik Anda dengan hasil berkualitas tinggi.</p>
+      <div class="text-center mb-16 reveal">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-primary-700 text-sm font-semibold mb-4 border border-blue-100">
+          <i class="fa-solid fa-layer-group mr-1.5"></i> Layanan Kami
+        </span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+          Solusi Lengkap untuk Kebutuhan<br />
+          <span class="gradient-text">IT &amp; Akademik Anda</span>
+        </h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
+          Dari pembangunan aplikasi web skala enterprise hingga pendampingan skripsi komprehensif — semua kami tangani dengan standar profesional dan dedikasi penuh.
+        </p>
+        <div class="section-divider mt-6"></div>
       </div>
 
       <!-- Cards Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
-        <!-- Card 1 -->
-        <div class="service-card bg-white rounded-2xl p-7 shadow-sm card-shadow reveal">
-          <div class="service-icon-wrapper w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-5">
-            <i class="fa-solid fa-laptop-code text-blue-700 text-xl"></i>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-7 stagger-children">
+
+        <!-- Card 1: Aplikasi Web -->
+        <div class="service-card reveal bg-white rounded-3xl p-7 card-shadow text-center group cursor-default border-2 border-transparent">
+          <div class="service-icon-wrapper w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-800 flex items-center justify-center shadow-lg">
+            <i class="fa-solid fa-laptop-code text-white text-3xl"></i>
           </div>
-          <h3 class="font-bold text-lg text-gray-900 mb-2">Pembuatan Aplikasi Web</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Sistem informasi, dashboard admin, CRUD, REST API — dibangun dengan teknologi modern dan aman.</p>
-          <ul class="mt-4 space-y-1.5">
-            <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 text-xs"></i>React / Vue / Laravel</li>
-            <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 text-xs"></i>Database MySQL / PostgreSQL</li>
-            <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 text-xs"></i>Responsive & Mobile-friendly</li>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Pembuatan Aplikasi Web</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-5">
+            Bangun sistem informasi, dashboard admin, e-commerce, atau aplikasi kustom dengan teknologi modern yang scalable dan aman.
+          </p>
+          <ul class="text-left space-y-2 mb-6">
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-blue-500 text-xs w-3 flex-shrink-0"></i> React / Vue / Laravel
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-blue-500 text-xs w-3 flex-shrink-0"></i> Database &amp; REST API
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-blue-500 text-xs w-3 flex-shrink-0"></i> Responsive Mobile-first
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-blue-500 text-xs w-3 flex-shrink-0"></i> Deploy &amp; Hosting
+            </li>
           </ul>
+          <a href="#kontak" class="inline-flex items-center gap-1.5 text-primary-700 font-semibold text-sm hover:gap-2.5 transition-all duration-300">
+            Konsultasi Gratis <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
         </div>
 
-        <!-- Card 2 -->
-        <div class="service-card bg-white rounded-2xl p-7 shadow-sm card-shadow reveal">
-          <div class="service-icon-wrapper w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-5">
-            <i class="fa-solid fa-globe text-purple-600 text-xl"></i>
+        <!-- Card 2: Landing Page -->
+        <div class="service-card reveal bg-white rounded-3xl p-7 card-shadow text-center group cursor-default border-2 border-transparent">
+          <div class="service-icon-wrapper w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-800 flex items-center justify-center shadow-lg">
+            <i class="fa-solid fa-globe text-white text-3xl"></i>
           </div>
-          <h3 class="font-bold text-lg text-gray-900 mb-2">Pembuatan Landing Page</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Landing page profesional untuk bisnis, produk, atau portofolio pribadi yang menarik dan cepat.</p>
-          <ul class="mt-4 space-y-1.5">
-            <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 text-xs"></i>Desain modern & clean</li>
-            <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 text-xs"></i>SEO-friendly</li>
-            <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 text-xs"></i>Loading super cepat</li>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Pembuatan Landing Page</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-5">
+            Landing page yang dioptimasi untuk konversi tinggi — ideal untuk bisnis, produk digital, portofolio, atau event promosi Anda.
+          </p>
+          <ul class="text-left space-y-2 mb-6">
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-violet-500 text-xs w-3 flex-shrink-0"></i> Desain Modern &amp; Menarik
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-violet-500 text-xs w-3 flex-shrink-0"></i> SEO-friendly
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-violet-500 text-xs w-3 flex-shrink-0"></i> Loading Super Cepat
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-violet-500 text-xs w-3 flex-shrink-0"></i> Integrasi WhatsApp &amp; Form
+            </li>
           </ul>
+          <a href="#kontak" class="inline-flex items-center gap-1.5 text-violet-700 font-semibold text-sm hover:gap-2.5 transition-all duration-300">
+            Konsultasi Gratis <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
         </div>
 
-        <!-- Card 3 -->
-        <div class="service-card bg-white rounded-2xl p-7 shadow-sm card-shadow reveal">
-          <div class="service-icon-wrapper w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-5">
-            <i class="fa-solid fa-book-open text-green-600 text-xl"></i>
+        <!-- Card 3: Bantu Skripsi -->
+        <div class="service-card reveal bg-white rounded-3xl p-7 card-shadow text-center group cursor-default border-2 border-transparent">
+          <div class="service-icon-wrapper w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-800 flex items-center justify-center shadow-lg">
+            <i class="fa-solid fa-book-open text-white text-3xl"></i>
           </div>
-          <h3 class="font-bold text-lg text-gray-900 mb-2">Bantu Skripsi / Tugas Akhir</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Bimbingan, penulisan, dan pembuatan program untuk skripsi bidang IT, sistem informasi, dan komputer.</p>
-          <ul class="mt-4 space-y-1.5">
-            <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 text-xs"></i>Analisis & desain sistem</li>
-            <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 text-xs"></i>Penulisan BAB I–V</li>
-            <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 text-xs"></i>Aplikasi pendukung skripsi</li>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Bantu Skripsi / Tugas Akhir</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-5">
+            Pendampingan intensif dari bab 1 hingga sidang — analisis, penulisan, implementasi sistem, dan persiapan presentasi sidang.
+          </p>
+          <ul class="text-left space-y-2 mb-6">
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-emerald-500 text-xs w-3 flex-shrink-0"></i> Semua Jurusan IT / Teknik
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-emerald-500 text-xs w-3 flex-shrink-0"></i> Bimbingan WhatsApp / Zoom
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-emerald-500 text-xs w-3 flex-shrink-0"></i> Revisi Sampai Acc Dosen
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-emerald-500 text-xs w-3 flex-shrink-0"></i> Implementasi Sistem / Kode
+            </li>
           </ul>
+          <a href="#kontak" class="inline-flex items-center gap-1.5 text-emerald-700 font-semibold text-sm hover:gap-2.5 transition-all duration-300">
+            Konsultasi Gratis <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
         </div>
 
-        <!-- Card 4 -->
-        <div class="service-card bg-white rounded-2xl p-7 shadow-sm card-shadow reveal">
-          <div class="service-icon-wrapper w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-5">
-            <i class="fa-solid fa-headset text-orange-500 text-xl"></i>
+        <!-- Card 4: Konsultasi IT -->
+        <div class="service-card reveal bg-white rounded-3xl p-7 card-shadow text-center group cursor-default border-2 border-transparent">
+          <div class="service-icon-wrapper w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-orange-400 to-rose-600 flex items-center justify-center shadow-lg">
+            <i class="fa-solid fa-comments text-white text-3xl"></i>
           </div>
-          <h3 class="font-bold text-lg text-gray-900 mb-2">Konsultasi IT</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Konsultasi teknis untuk pemilihan teknologi, arsitektur sistem, debugging, dan optimasi performa.</p>
-          <ul class="mt-4 space-y-1.5">
-            <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 text-xs"></i>Via WhatsApp / Zoom</li>
-            <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 text-xs"></i>Solusi cepat & tepat</li>
-            <li class="flex items-center gap-2 text-sm text-gray-600"><i class="fa-solid fa-check text-green-500 text-xs"></i>Follow-up sampai selesai</li>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Konsultasi IT</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-5">
+            Diskusikan kebutuhan IT Anda bersama konsultan berpengalaman — dari arsitektur sistem, pemilihan teknologi, hingga roadmap pengembangan.
+          </p>
+          <ul class="text-left space-y-2 mb-6">
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-orange-500 text-xs w-3 flex-shrink-0"></i> Sesi 1-on-1 via Zoom / Meet
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-orange-500 text-xs w-3 flex-shrink-0"></i> Analisis Kebutuhan Sistem
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-orange-500 text-xs w-3 flex-shrink-0"></i> Rekomendasi Teknologi
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-gray-600">
+              <i class="fa-solid fa-check text-orange-500 text-xs w-3 flex-shrink-0"></i> Konsultasi Pertama Gratis
+            </li>
           </ul>
+          <a href="#kontak" class="inline-flex items-center gap-1.5 text-orange-700 font-semibold text-sm hover:gap-2.5 transition-all duration-300">
+            Booking Konsultasi <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
         </div>
+      </div>
+
+      <!-- Bottom CTA -->
+      <div class="text-center mt-14 reveal">
+        <p class="text-gray-500 mb-5 text-base">Tidak yakin butuh layanan apa? Konsultasikan kebutuhan Anda secara gratis — tanpa syarat.</p>
+        <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20konsultasi%20gratis%20mengenai%20layanan%20JasaIT%20%26%20Skripsi"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-green-500 hover:bg-green-600 text-white font-bold shadow-xl hover:shadow-green-200 transition-all duration-300 hover:-translate-y-1">
+          <i class="fa-brands fa-whatsapp text-xl"></i> Chat Konsultasi Gratis
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ===== HARGA ===== -->
-  <section id="harga" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- =====================================================
+       HARGA SECTION
+  ===================================================== -->
+  <section id="harga" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
       <!-- Heading -->
-      <div class="text-center mb-14 reveal">
-        <span class="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Transparan & Terjangkau</span>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Paket Harga</h2>
-        <div class="section-divider mb-4"></div>
-        <p class="text-gray-500 max-w-lg mx-auto">Pilih paket yang sesuai kebutuhan. Semua paket sudah termasuk revisi dan dukungan teknis.</p>
+      <div class="text-center mb-16 reveal">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-primary-700 text-sm font-semibold mb-4 border border-blue-100">
+          <i class="fa-solid fa-tag mr-1.5"></i> Paket Harga
+        </span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+          Harga Transparan,<br />
+          <span class="gradient-text">Tanpa Biaya Tersembunyi</span>
+        </h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
+          Pilih paket yang sesuai anggaran dan kebutuhan Anda. Semua paket sudah termasuk konsultasi, pengerjaan, dan revisi.
+        </p>
+        <div class="section-divider mt-6"></div>
       </div>
 
       <!-- Pricing Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+      <div class="grid md:grid-cols-3 gap-8 items-start max-w-5xl mx-auto">
 
         <!-- Starter -->
-        <div class="pricing-card bg-white border-2 border-gray-100 rounded-2xl p-8 card-shadow reveal">
+        <div class="pricing-card reveal bg-white rounded-3xl p-8 border border-gray-100 card-shadow">
           <div class="mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center mb-4">
+              <i class="fa-solid fa-seedling text-primary-700 text-xl"></i>
+            </div>
             <h3 class="text-xl font-bold text-gray-900 mb-1">Starter</h3>
-            <p class="text-gray-500 text-sm">Untuk kebutuhan sederhana</p>
+            <p class="text-gray-400 text-sm">Untuk kebutuhan dasar &amp; sederhana</p>
           </div>
-          <div class="mb-6">
-            <span class="price-amount text-4xl font-extrabold">Rp 300K</span>
-            <span class="text-gray-400 text-sm ml-1">/ proyek</span>
+          <div class="mb-7">
+            <span class="text-4xl font-extrabold price-amount">Rp 300.000</span>
+            <p class="text-gray-400 text-xs mt-1">per proyek / per bab skripsi</p>
           </div>
           <ul class="space-y-3 mb-8">
-            <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fa-solid fa-circle-check text-green-500 mt-0.5"></i>Landing page 1 halaman</li>
-            <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fa-solid fa-circle-check text-green-500 mt-0.5"></i>1 Bab skripsi (pisah)</li>
-            <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fa-solid fa-circle-check text-green-500 mt-0.5"></i>Desain responsif</li>
-            <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fa-solid fa-circle-check text-green-500 mt-0.5"></i>2x revisi</li>
-            <li class="flex items-start gap-2 text-sm text-gray-400"><i class="fa-solid fa-circle-xmark text-gray-300 mt-0.5"></i>Hosting & domain</li>
-            <li class="flex items-start gap-2 text-sm text-gray-400"><i class="fa-solid fa-circle-xmark text-gray-300 mt-0.5"></i>Source code</li>
+            <li class="flex items-start gap-3 text-sm text-gray-600">
+              <i class="fa-solid fa-circle-check text-primary-500 mt-0.5 flex-shrink-0"></i>
+              Landing page 1 halaman (HTML/CSS/JS)
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-600">
+              <i class="fa-solid fa-circle-check text-primary-500 mt-0.5 flex-shrink-0"></i>
+              Penulisan 1 bab skripsi lengkap
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-600">
+              <i class="fa-solid fa-circle-check text-primary-500 mt-0.5 flex-shrink-0"></i>
+              Desain responsif mobile-first
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-600">
+              <i class="fa-solid fa-circle-check text-primary-500 mt-0.5 flex-shrink-0"></i>
+              2x revisi gratis
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-600">
+              <i class="fa-solid fa-circle-check text-primary-500 mt-0.5 flex-shrink-0"></i>
+              Pengerjaan 3–5 hari kerja
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-300">
+              <i class="fa-solid fa-circle-xmark mt-0.5 flex-shrink-0"></i>
+              <span class="line-through">Source code &amp; dokumentasi</span>
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-300">
+              <i class="fa-solid fa-circle-xmark mt-0.5 flex-shrink-0"></i>
+              <span class="line-through">Konsultasi prioritas</span>
+            </li>
           </ul>
-          <a href="#kontak" class="block w-full text-center border-2 border-blue-700 text-blue-700 font-semibold py-3 rounded-xl hover:bg-blue-700 hover:text-white transition-all duration-200">
-            Pilih Paket Ini
+          <a href="#kontak"
+             class="block w-full text-center py-3.5 rounded-2xl border-2 border-primary-700 text-primary-800 font-bold hover:bg-primary-800 hover:text-white transition-all duration-300 text-sm">
+            Pilih Starter
           </a>
         </div>
 
         <!-- Professional (Popular) -->
-        <div class="pricing-card pricing-card-popular rounded-2xl p-8 reveal">
-          <!-- Badge -->
+        <div class="pricing-card pricing-card-popular reveal delay-100 rounded-3xl p-8 text-white relative">
           <div class="absolute -top-4 left-1/2 -translate-x-1/2">
-            <span class="pricing-badge text-white text-xs font-bold px-5 py-1.5 rounded-full shadow-lg">⭐ TERPOPULER</span>
+            <span class="pricing-badge inline-block px-5 py-1.5 rounded-full text-white text-xs font-extrabold tracking-widest shadow-lg uppercase">
+              &#9889; Terpopuler
+            </span>
           </div>
-
           <div class="mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center mb-4">
+              <i class="fa-solid fa-crown text-yellow-300 text-xl"></i>
+            </div>
             <h3 class="text-xl font-bold text-white mb-1">Professional</h3>
-            <p class="text-blue-200 text-sm">Untuk kebutuhan menyeluruh</p>
+            <p class="text-blue-200 text-sm">Paling banyak dipilih klien kami</p>
           </div>
-          <div class="mb-6">
-            <span class="price-amount-white text-4xl font-extrabold">Rp 750K</span>
-            <span class="text-blue-200 text-sm ml-1">/ proyek</span>
+          <div class="mb-7">
+            <span class="text-4xl font-extrabold text-white">Rp 750.000</span>
+            <p class="text-blue-200 text-xs mt-1">per proyek / skripsi penuh</p>
           </div>
           <ul class="space-y-3 mb-8">
-            <li class="flex items-start gap-2 text-sm text-white"><i class="fa-solid fa-circle-check text-green-300 mt-0.5"></i>Aplikasi web multi-halaman</li>
-            <li class="flex items-start gap-2 text-sm text-white"><i class="fa-solid fa-circle-check text-green-300 mt-0.5"></i>Skripsi penuh (BAB I–V)</li>
-            <li class="flex items-start gap-2 text-sm text-white"><i class="fa-solid fa-circle-check text-green-300 mt-0.5"></i>Database & backend API</li>
-            <li class="flex items-start gap-2 text-sm text-white"><i class="fa-solid fa-circle-check text-green-300 mt-0.5"></i>5x revisi</li>
-            <li class="flex items-start gap-2 text-sm text-white"><i class="fa-solid fa-circle-check text-green-300 mt-0.5"></i>Source code + dokumentasi</li>
-            <li class="flex items-start gap-2 text-sm text-blue-200"><i class="fa-solid fa-circle-xmark text-blue-300 mt-0.5"></i>Hosting & domain</li>
+            <li class="flex items-start gap-3 text-sm text-white/90">
+              <i class="fa-solid fa-circle-check text-green-300 mt-0.5 flex-shrink-0"></i>
+              Aplikasi web fullstack (React/Laravel)
+            </li>
+            <li class="flex items-start gap-3 text-sm text-white/90">
+              <i class="fa-solid fa-circle-check text-green-300 mt-0.5 flex-shrink-0"></i>
+              Skripsi penuh Bab I–V + lampiran
+            </li>
+            <li class="flex items-start gap-3 text-sm text-white/90">
+              <i class="fa-solid fa-circle-check text-green-300 mt-0.5 flex-shrink-0"></i>
+              Database &amp; REST API terintegrasi
+            </li>
+            <li class="flex items-start gap-3 text-sm text-white/90">
+              <i class="fa-solid fa-circle-check text-green-300 mt-0.5 flex-shrink-0"></i>
+              Revisi tidak terbatas
+            </li>
+            <li class="flex items-start gap-3 text-sm text-white/90">
+              <i class="fa-solid fa-circle-check text-green-300 mt-0.5 flex-shrink-0"></i>
+              Source code &amp; dokumentasi lengkap
+            </li>
+            <li class="flex items-start gap-3 text-sm text-white/90">
+              <i class="fa-solid fa-circle-check text-green-300 mt-0.5 flex-shrink-0"></i>
+              Konsultasi prioritas via WhatsApp
+            </li>
+            <li class="flex items-start gap-3 text-sm text-white/90">
+              <i class="fa-solid fa-circle-check text-green-300 mt-0.5 flex-shrink-0"></i>
+              Pengerjaan 7–14 hari kerja
+            </li>
           </ul>
-          <a href="#kontak" class="block w-full text-center bg-white text-blue-800 font-bold py-3 rounded-xl hover:bg-blue-50 transition-colors duration-200">
-            Pilih Paket Ini
+          <a href="#kontak"
+             class="block w-full text-center py-3.5 rounded-2xl bg-white text-primary-800 font-bold hover:bg-blue-50 transition-all duration-300 shadow-xl text-sm">
+            Pilih Professional
           </a>
         </div>
 
         <!-- Enterprise -->
-        <div class="pricing-card bg-white border-2 border-gray-100 rounded-2xl p-8 card-shadow reveal">
+        <div class="pricing-card reveal delay-200 bg-white rounded-3xl p-8 border border-gray-100 card-shadow">
           <div class="mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center mb-4">
+              <i class="fa-solid fa-building text-purple-700 text-xl"></i>
+            </div>
             <h3 class="text-xl font-bold text-gray-900 mb-1">Enterprise</h3>
-            <p class="text-gray-500 text-sm">Paket lengkap all-in-one</p>
+            <p class="text-gray-400 text-sm">Untuk proyek besar &amp; kebutuhan kompleks</p>
           </div>
-          <div class="mb-6">
-            <span class="price-amount text-4xl font-extrabold">Rp 1.5JT</span>
-            <span class="text-gray-400 text-sm ml-1">/ proyek</span>
+          <div class="mb-7">
+            <span class="text-4xl font-extrabold" style="background:linear-gradient(135deg,#7C3AED,#9333EA);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Rp 1.500.000</span>
+            <p class="text-gray-400 text-xs mt-1">per sistem / skripsi + aplikasi</p>
           </div>
           <ul class="space-y-3 mb-8">
-            <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fa-solid fa-circle-check text-green-500 mt-0.5"></i>Sistem web kompleks lengkap</li>
-            <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fa-solid fa-circle-check text-green-500 mt-0.5"></i>Skripsi + aplikasi pendukung</li>
-            <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fa-solid fa-circle-check text-green-500 mt-0.5"></i>Deploy ke hosting/VPS</li>
-            <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fa-solid fa-circle-check text-green-500 mt-0.5"></i>Revisi tidak terbatas</li>
-            <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fa-solid fa-circle-check text-green-500 mt-0.5"></i>Source code + dokumentasi</li>
-            <li class="flex items-start gap-2 text-sm text-gray-600"><i class="fa-solid fa-circle-check text-green-500 mt-0.5"></i>Support 3 bulan pasca selesai</li>
+            <li class="flex items-start gap-3 text-sm text-gray-600">
+              <i class="fa-solid fa-circle-check text-purple-500 mt-0.5 flex-shrink-0"></i>
+              Sistem web kompleks multi-role
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-600">
+              <i class="fa-solid fa-circle-check text-purple-500 mt-0.5 flex-shrink-0"></i>
+              Skripsi lengkap + implementasi sistem
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-600">
+              <i class="fa-solid fa-circle-check text-purple-500 mt-0.5 flex-shrink-0"></i>
+              Deploy ke server / VPS milik klien
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-600">
+              <i class="fa-solid fa-circle-check text-purple-500 mt-0.5 flex-shrink-0"></i>
+              Revisi tidak terbatas
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-600">
+              <i class="fa-solid fa-circle-check text-purple-500 mt-0.5 flex-shrink-0"></i>
+              Pelatihan penggunaan sistem
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-600">
+              <i class="fa-solid fa-circle-check text-purple-500 mt-0.5 flex-shrink-0"></i>
+              Garansi maintenance 1 bulan
+            </li>
+            <li class="flex items-start gap-3 text-sm text-gray-600">
+              <i class="fa-solid fa-circle-check text-purple-500 mt-0.5 flex-shrink-0"></i>
+              Konsultasi personal prioritas
+            </li>
           </ul>
-          <a href="#kontak" class="block w-full text-center border-2 border-blue-700 text-blue-700 font-semibold py-3 rounded-xl hover:bg-blue-700 hover:text-white transition-all duration-200">
-            Pilih Paket Ini
+          <a href="#kontak"
+             class="block w-full text-center py-3.5 rounded-2xl border-2 border-purple-600 text-purple-700 font-bold hover:bg-purple-600 hover:text-white transition-all duration-300 text-sm">
+            Pilih Enterprise
           </a>
         </div>
-
       </div>
 
-      <!-- Note -->
-      <p class="text-center text-gray-400 text-sm mt-8">
-        <i class="fa-solid fa-info-circle mr-1"></i>
-        Harga dapat disesuaikan dengan kompleksitas proyek. Hubungi kami untuk konsultasi gratis.
+      <p class="text-center text-gray-400 text-sm mt-10 reveal">
+        <i class="fa-solid fa-circle-info mr-1.5 text-blue-400"></i>
+        Harga dapat disesuaikan dengan kompleksitas proyek. Hubungi kami untuk mendapatkan penawaran terbaik.
       </p>
     </div>
   </section>
 
-  <!-- ===== PORTOFOLIO ===== -->
-  <section id="portofolio" class="py-20 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- =====================================================
+       PORTOFOLIO SECTION
+  ===================================================== -->
+  <section id="portofolio" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
       <!-- Heading -->
-      <div class="text-center mb-14 reveal">
-        <span class="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Hasil Nyata</span>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Portofolio</h2>
-        <div class="section-divider mb-4"></div>
-        <p class="text-gray-500 max-w-lg mx-auto">Beberapa proyek yang telah kami selesaikan untuk klien dari berbagai bidang.</p>
+      <div class="text-center mb-16 reveal">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-primary-700 text-sm font-semibold mb-4 border border-blue-100">
+          <i class="fa-solid fa-briefcase mr-1.5"></i> Portofolio
+        </span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+          Karya Nyata yang Sudah<br />
+          <span class="gradient-text">Kami Wujudkan</span>
+        </h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto leading-relaxed">
+          Sebagian proyek terbaik yang telah kami selesaikan — dikerjakan dengan dedikasi penuh dan standar kualitas tinggi untuk kepuasan klien.
+        </p>
+        <div class="section-divider mt-6"></div>
       </div>
 
-      <!-- Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+      <!-- Portfolio Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 stagger-children">
 
         <!-- Project 1 -->
-        <div class="portfolio-card bg-white rounded-2xl overflow-hidden shadow-sm card-shadow reveal group">
+        <div class="portfolio-card reveal bg-white rounded-3xl overflow-hidden card-shadow border border-gray-100 group">
           <div class="relative h-52 port-grad-1 overflow-hidden">
             <div class="portfolio-img w-full h-full flex items-center justify-center">
-              <i class="fa-solid fa-store text-white/70 text-6xl"></i>
+              <i class="fa-solid fa-store text-white/60 text-7xl"></i>
             </div>
-            <div class="card-overlay rounded-t-2xl">
+            <div class="card-overlay">
               <div>
-                <h4 class="text-white font-bold">Sistem E-Commerce</h4>
-                <p class="text-blue-200 text-xs mt-1">Toko online lengkap dengan payment gateway</p>
+                <p class="text-white font-bold text-base mb-0.5">SiMarket — Toko Online</p>
+                <p class="text-blue-200 text-xs">E-Commerce Fullstack</p>
               </div>
             </div>
           </div>
-          <div class="p-5">
-            <h4 class="font-bold text-gray-900 mb-2">Toko Online UMKM</h4>
-            <p class="text-gray-500 text-sm mb-3">Platform e-commerce untuk usaha fashion lokal dengan fitur keranjang, checkout, dan laporan penjualan.</p>
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="font-bold text-gray-800 text-base leading-tight">SiMarket — Platform Toko Online UMKM</h3>
+              <span class="text-xs text-green-600 bg-green-50 px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-2">Selesai</span>
+            </div>
+            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+              Platform e-commerce fullstack dengan manajemen produk, keranjang, pembayaran Midtrans, dan dashboard laporan penjualan real-time.
+            </p>
             <div class="flex flex-wrap gap-2">
-              <span class="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">Laravel</span>
-              <span class="bg-purple-100 text-purple-700 text-xs font-medium px-2.5 py-1 rounded-full">Vue.js</span>
-              <span class="bg-green-100 text-green-700 text-xs font-medium px-2.5 py-1 rounded-full">MySQL</span>
+              <span class="px-2.5 py-1 bg-blue-50 text-primary-700 text-xs font-semibold rounded-lg">Laravel</span>
+              <span class="px-2.5 py-1 bg-blue-50 text-primary-700 text-xs font-semibold rounded-lg">Vue.js</span>
+              <span class="px-2.5 py-1 bg-blue-50 text-primary-700 text-xs font-semibold rounded-lg">MySQL</span>
+              <span class="px-2.5 py-1 bg-blue-50 text-primary-700 text-xs font-semibold rounded-lg">Midtrans</span>
             </div>
           </div>
         </div>
 
         <!-- Project 2 -->
-        <div class="portfolio-card bg-white rounded-2xl overflow-hidden shadow-sm card-shadow reveal group">
+        <div class="portfolio-card reveal bg-white rounded-3xl overflow-hidden card-shadow border border-gray-100 group">
           <div class="relative h-52 port-grad-2 overflow-hidden">
             <div class="portfolio-img w-full h-full flex items-center justify-center">
-              <i class="fa-solid fa-graduation-cap text-white/70 text-6xl"></i>
+              <i class="fa-solid fa-graduation-cap text-white/60 text-7xl"></i>
             </div>
-            <div class="card-overlay rounded-t-2xl">
+            <div class="card-overlay">
               <div>
-                <h4 class="text-white font-bold">Sistem Informasi Akademik</h4>
-                <p class="text-blue-200 text-xs mt-1">Skripsi S1 Teknik Informatika — Nilai A</p>
+                <p class="text-white font-bold text-base mb-0.5">SIAKAD Universitas</p>
+                <p class="text-blue-200 text-xs">Skripsi S1 Teknik Informatika — Nilai A</p>
               </div>
             </div>
           </div>
-          <div class="p-5">
-            <h4 class="font-bold text-gray-900 mb-2">Skripsi Sistem Akademik</h4>
-            <p class="text-gray-500 text-sm mb-3">Aplikasi manajemen nilai dan absensi mahasiswa untuk skripsi S1 di universitas swasta Bandung.</p>
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="font-bold text-gray-800 text-base leading-tight">SIAKAD — Sistem Informasi Akademik</h3>
+              <span class="text-xs text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-2">Lulus A</span>
+            </div>
+            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+              Skripsi S1 Informatika berupa SIAKAD multi-role (mahasiswa, dosen, admin) dengan KRS online, nilai, absensi, dan laporan akademik.
+            </p>
             <div class="flex flex-wrap gap-2">
-              <span class="bg-orange-100 text-orange-700 text-xs font-medium px-2.5 py-1 rounded-full">CodeIgniter</span>
-              <span class="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">Bootstrap</span>
-              <span class="bg-green-100 text-green-700 text-xs font-medium px-2.5 py-1 rounded-full">MySQL</span>
+              <span class="px-2.5 py-1 bg-pink-50 text-pink-700 text-xs font-semibold rounded-lg">CodeIgniter 4</span>
+              <span class="px-2.5 py-1 bg-pink-50 text-pink-700 text-xs font-semibold rounded-lg">Bootstrap 5</span>
+              <span class="px-2.5 py-1 bg-pink-50 text-pink-700 text-xs font-semibold rounded-lg">MySQL</span>
             </div>
           </div>
         </div>
 
         <!-- Project 3 -->
-        <div class="portfolio-card bg-white rounded-2xl overflow-hidden shadow-sm card-shadow reveal group">
+        <div class="portfolio-card reveal bg-white rounded-3xl overflow-hidden card-shadow border border-gray-100 group">
           <div class="relative h-52 port-grad-3 overflow-hidden">
             <div class="portfolio-img w-full h-full flex items-center justify-center">
-              <i class="fa-solid fa-chart-line text-white/70 text-6xl"></i>
+              <i class="fa-solid fa-chart-line text-white/60 text-7xl"></i>
             </div>
-            <div class="card-overlay rounded-t-2xl">
+            <div class="card-overlay">
               <div>
-                <h4 class="text-white font-bold">Dashboard Analitik</h4>
-                <p class="text-blue-200 text-xs mt-1">Visualisasi data real-time untuk manajemen</p>
+                <p class="text-white font-bold text-base mb-0.5">DataViz Dashboard</p>
+                <p class="text-blue-200 text-xs">Analitik Bisnis Real-time</p>
               </div>
             </div>
           </div>
-          <div class="p-5">
-            <h4 class="font-bold text-gray-900 mb-2">Dashboard Laporan Bisnis</h4>
-            <p class="text-gray-500 text-sm mb-3">Panel kontrol dengan grafik interaktif untuk memantau KPI dan performa bisnis secara real-time.</p>
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="font-bold text-gray-800 text-base leading-tight">DataViz — Dashboard Analitik Bisnis</h3>
+              <span class="text-xs text-green-600 bg-green-50 px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-2">Selesai</span>
+            </div>
+            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+              Dashboard analitik real-time untuk monitoring penjualan, inventori, dan KPI bisnis dengan visualisasi grafik interaktif dan laporan PDF.
+            </p>
             <div class="flex flex-wrap gap-2">
-              <span class="bg-cyan-100 text-cyan-700 text-xs font-medium px-2.5 py-1 rounded-full">React</span>
-              <span class="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">Tailwind</span>
-              <span class="bg-yellow-100 text-yellow-700 text-xs font-medium px-2.5 py-1 rounded-full">Chart.js</span>
+              <span class="px-2.5 py-1 bg-cyan-50 text-cyan-700 text-xs font-semibold rounded-lg">React</span>
+              <span class="px-2.5 py-1 bg-cyan-50 text-cyan-700 text-xs font-semibold rounded-lg">Chart.js</span>
+              <span class="px-2.5 py-1 bg-cyan-50 text-cyan-700 text-xs font-semibold rounded-lg">Node.js</span>
+              <span class="px-2.5 py-1 bg-cyan-50 text-cyan-700 text-xs font-semibold rounded-lg">PostgreSQL</span>
             </div>
           </div>
         </div>
 
         <!-- Project 4 -->
-        <div class="portfolio-card bg-white rounded-2xl overflow-hidden shadow-sm card-shadow reveal group">
+        <div class="portfolio-card reveal bg-white rounded-3xl overflow-hidden card-shadow border border-gray-100 group">
           <div class="relative h-52 port-grad-4 overflow-hidden">
             <div class="portfolio-img w-full h-full flex items-center justify-center">
-              <i class="fa-solid fa-hospital text-white/70 text-6xl"></i>
+              <i class="fa-solid fa-hospital text-white/60 text-7xl"></i>
             </div>
-            <div class="card-overlay rounded-t-2xl">
+            <div class="card-overlay">
               <div>
-                <h4 class="text-white font-bold">Sistem Klinik</h4>
-                <p class="text-blue-200 text-xs mt-1">Manajemen pasien & rekam medis digital</p>
+                <p class="text-white font-bold text-base mb-0.5">SiKlinik Sehat</p>
+                <p class="text-blue-200 text-xs">Manajemen Klinik Terintegrasi</p>
               </div>
             </div>
           </div>
-          <div class="p-5">
-            <h4 class="font-bold text-gray-900 mb-2">Aplikasi Manajemen Klinik</h4>
-            <p class="text-gray-500 text-sm mb-3">Sistem pendaftaran pasien, jadwal dokter, rekam medis, dan pengelolaan obat untuk klinik swasta.</p>
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="font-bold text-gray-800 text-base leading-tight">SiKlinik — Sistem Manajemen Klinik</h3>
+              <span class="text-xs text-green-600 bg-green-50 px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-2">Selesai</span>
+            </div>
+            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+              Sistem manajemen klinik terintegrasi: pendaftaran pasien, antrian digital, rekam medis, jadwal dokter, dan laporan keuangan otomatis.
+            </p>
             <div class="flex flex-wrap gap-2">
-              <span class="bg-red-100 text-red-700 text-xs font-medium px-2.5 py-1 rounded-full">Laravel</span>
-              <span class="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">Alpine.js</span>
-              <span class="bg-green-100 text-green-700 text-xs font-medium px-2.5 py-1 rounded-full">PostgreSQL</span>
+              <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-lg">Laravel</span>
+              <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-lg">Alpine.js</span>
+              <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-lg">Tailwind</span>
+              <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-lg">MySQL</span>
             </div>
           </div>
         </div>
 
         <!-- Project 5 -->
-        <div class="portfolio-card bg-white rounded-2xl overflow-hidden shadow-sm card-shadow reveal group">
+        <div class="portfolio-card reveal bg-white rounded-3xl overflow-hidden card-shadow border border-gray-100 group">
           <div class="relative h-52 port-grad-5 overflow-hidden">
             <div class="portfolio-img w-full h-full flex items-center justify-center">
-              <i class="fa-solid fa-briefcase text-white/70 text-6xl"></i>
+              <i class="fa-solid fa-brain text-white/60 text-7xl"></i>
             </div>
-            <div class="card-overlay rounded-t-2xl">
+            <div class="card-overlay">
               <div>
-                <h4 class="text-white font-bold">Landing Page Jasa</h4>
-                <p class="text-blue-200 text-xs mt-1">Konversi tinggi untuk bisnis lokal</p>
+                <p class="text-white font-bold text-base mb-0.5">Skripsi: Rekomendasi ML</p>
+                <p class="text-blue-200 text-xs">S1 Teknik Informatika — Nilai A</p>
               </div>
             </div>
           </div>
-          <div class="p-5">
-            <h4 class="font-bold text-gray-900 mb-2">Landing Page Jasa Konstruksi</h4>
-            <p class="text-gray-500 text-sm mb-3">Landing page profesional untuk kontraktor bangunan dengan galeri proyek dan form penawaran.</p>
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="font-bold text-gray-800 text-base leading-tight">Skripsi: Sistem Rekomendasi Produk ML</h3>
+              <span class="text-xs text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-2">Lulus A</span>
+            </div>
+            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+              Skripsi dengan implementasi algoritma Collaborative Filtering &amp; Content-Based Filtering untuk sistem rekomendasi produk e-commerce berbasis Python.
+            </p>
             <div class="flex flex-wrap gap-2">
-              <span class="bg-pink-100 text-pink-700 text-xs font-medium px-2.5 py-1 rounded-full">HTML5</span>
-              <span class="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">Tailwind</span>
-              <span class="bg-yellow-100 text-yellow-700 text-xs font-medium px-2.5 py-1 rounded-full">JavaScript</span>
+              <span class="px-2.5 py-1 bg-rose-50 text-rose-700 text-xs font-semibold rounded-lg">Python</span>
+              <span class="px-2.5 py-1 bg-rose-50 text-rose-700 text-xs font-semibold rounded-lg">Flask</span>
+              <span class="px-2.5 py-1 bg-rose-50 text-rose-700 text-xs font-semibold rounded-lg">Scikit-learn</span>
+              <span class="px-2.5 py-1 bg-rose-50 text-rose-700 text-xs font-semibold rounded-lg">Pandas</span>
             </div>
           </div>
         </div>
 
         <!-- Project 6 -->
-        <div class="portfolio-card bg-white rounded-2xl overflow-hidden shadow-sm card-shadow reveal group">
+        <div class="portfolio-card reveal bg-white rounded-3xl overflow-hidden card-shadow border border-gray-100 group">
           <div class="relative h-52 port-grad-6 overflow-hidden">
             <div class="portfolio-img w-full h-full flex items-center justify-center">
-              <i class="fa-solid fa-boxes-stacked text-white/70 text-6xl"></i>
+              <i class="fa-solid fa-mobile-screen text-white/60 text-7xl"></i>
             </div>
-            <div class="card-overlay rounded-t-2xl">
+            <div class="card-overlay">
               <div>
-                <h4 class="text-white font-bold">Sistem Inventori</h4>
-                <p class="text-blue-200 text-xs mt-1">Skripsi D3 Manajemen Informatika — Nilai A</p>
+                <p class="text-white font-bold text-base mb-0.5">TA D3: Presensi QR Code</p>
+                <p class="text-blue-200 text-xs">D3 Sistem Informasi — Nilai A</p>
               </div>
             </div>
           </div>
-          <div class="p-5">
-            <h4 class="font-bold text-gray-900 mb-2">Skripsi Sistem Inventori</h4>
-            <p class="text-gray-500 text-sm mb-3">Aplikasi pengelolaan stok barang dan laporan gudang untuk skripsi D3 dengan metode FIFO.</p>
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="font-bold text-gray-800 text-base leading-tight">TA D3: Aplikasi Presensi QR Code</h3>
+              <span class="text-xs text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full font-semibold flex-shrink-0 ml-2">Lulus A</span>
+            </div>
+            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+              Tugas Akhir D3 berupa aplikasi presensi karyawan berbasis QR Code dengan laporan kehadiran otomatis, notifikasi, dan export Excel.
+            </p>
             <div class="flex flex-wrap gap-2">
-              <span class="bg-purple-100 text-purple-700 text-xs font-medium px-2.5 py-1 rounded-full">PHP Native</span>
-              <span class="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">Bootstrap 5</span>
-              <span class="bg-green-100 text-green-700 text-xs font-medium px-2.5 py-1 rounded-full">MySQL</span>
+              <span class="px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-semibold rounded-lg">PHP Native</span>
+              <span class="px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-semibold rounded-lg">jQuery</span>
+              <span class="px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-semibold rounded-lg">QR Library</span>
+              <span class="px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-semibold rounded-lg">MySQL</span>
             </div>
           </div>
         </div>
 
       </div>
+
+      <div class="text-center mt-14 reveal">
+        <p class="text-gray-400 mb-5 text-sm">Ingin melihat lebih banyak karya kami?</p>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl bg-gray-900 hover:bg-gray-700 text-white font-bold shadow-xl transition-all duration-300 hover:-translate-y-1">
+          <i class="fa-brands fa-github text-xl"></i> Lihat Semua di GitHub
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- ===== KONTAK / ORDER FORM ===== -->
-  <section id="kontak" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+  <!-- =====================================================
+       TESTIMONI SECTION
+  ===================================================== -->
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <!-- Left: Info -->
-        <div class="reveal-left">
-          <span class="inline-block bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Hubungi Kami</span>
-          <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Siap Mulai Proyek<br /><span class="gradient-text">Anda?</span></h2>
-          <div class="section-divider mx-0 mb-6"></div>
-          <p class="text-gray-500 leading-relaxed mb-8">Ceritakan kebutuhan Anda dan kami akan respon dalam waktu kurang dari 1 jam. Konsultasi awal gratis tanpa syarat.</p>
+      <div class="text-center mb-16 reveal">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-primary-700 text-sm font-semibold mb-4 border border-blue-100">
+          <i class="fa-solid fa-star mr-1.5"></i> Testimoni Klien
+        </span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
+          Apa Kata <span class="gradient-text">Klien Kami?</span>
+        </h2>
+        <div class="section-divider mt-5"></div>
+      </div>
 
-          <!-- Contact Info -->
-          <div class="space-y-5">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fa-brands fa-whatsapp text-green-600 text-xl"></i>
-              </div>
-              <div>
-                <div class="text-xs text-gray-400 mb-0.5">WhatsApp (Fast Response)</div>
-                <a href="https://wa.me/6281234567890" class="font-semibold text-gray-800 hover:text-blue-700 transition-colors">+62 812-3456-7890</a>
-              </div>
-            </div>
+      <div class="grid md:grid-cols-3 gap-7 stagger-children">
 
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fa-brands fa-instagram text-pink-600 text-xl"></i>
-              </div>
-              <div>
-                <div class="text-xs text-gray-400 mb-0.5">Instagram</div>
-                <a href="#" class="font-semibold text-gray-800 hover:text-blue-700 transition-colors">@jasait.skripsi</a>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                <i class="fa-regular fa-envelope text-blue-600 text-xl"></i>
-              </div>
-              <div>
-                <div class="text-xs text-gray-400 mb-0.5">Email</div>
-                <a href="mailto:jasait.skripsi@gmail.com" class="font-semibold text-gray-800 hover:text-blue-700 transition-colors">jasait.skripsi@gmail.com</a>
-              </div>
-            </div>
+        <!-- Testimoni 1 -->
+        <div class="testimonial-card reveal bg-white rounded-3xl p-7 card-shadow border border-gray-100">
+          <div class="flex items-center gap-1 mb-5 text-yellow-400">
+            <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+            <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+            <i class="fa-solid fa-star text-sm"></i>
           </div>
-
-          <!-- Trust badges -->
-          <div class="mt-10 flex flex-wrap gap-4">
-            <div class="flex items-center gap-2 bg-gray-50 rounded-xl px-4 py-3 stat-card">
-              <i class="fa-solid fa-shield-halved text-blue-600"></i>
-              <span class="text-sm font-medium text-gray-700">Terpercaya</span>
-            </div>
-            <div class="flex items-center gap-2 bg-gray-50 rounded-xl px-4 py-3 stat-card">
-              <i class="fa-solid fa-bolt text-yellow-500"></i>
-              <span class="text-sm font-medium text-gray-700">Respon Cepat</span>
-            </div>
-            <div class="flex items-center gap-2 bg-gray-50 rounded-xl px-4 py-3 stat-card">
-              <i class="fa-solid fa-rotate text-green-500"></i>
-              <span class="text-sm font-medium text-gray-700">Revisi Included</span>
+          <p class="text-gray-600 text-sm leading-relaxed mb-6 italic">
+            "Alhamdulillah skripsi saya selesai tepat waktu dan lulus dengan nilai A. Penjelasan dan bimbingannya sangat jelas, bahkan dosen pembimbing saya pun terkesan dengan kualitas tulisannya. Sangat direkomendasikan untuk mahasiswa yang butuh bantuan!"
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-blue-400 to-blue-700 flex items-center justify-center text-white font-bold flex-shrink-0">A</div>
+            <div>
+              <p class="font-bold text-gray-800 text-sm">Andi Pratama</p>
+              <p class="text-gray-400 text-xs">Mahasiswa S1 Teknik Informatika — UNS Solo</p>
             </div>
           </div>
         </div>
 
-        <!-- Right: Form -->
-        <div class="bg-gray-50 rounded-2xl p-8 shadow-sm card-shadow reveal-right">
-          <h3 class="text-xl font-bold text-gray-900 mb-6">Form Pemesanan</h3>
+        <!-- Testimoni 2 -->
+        <div class="testimonial-card reveal delay-100 bg-white rounded-3xl p-7 card-shadow border border-gray-100">
+          <div class="flex items-center gap-1 mb-5 text-yellow-400">
+            <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+            <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+            <i class="fa-solid fa-star text-sm"></i>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-6 italic">
+            "Aplikasi web toko online saya dikerjakan sangat profesional dan selesai lebih cepat dari perkiraan. Desainnya modern dan keren banget, fiturnya lengkap sesuai permintaan. Klien saya langsung suka! Pasti akan order lagi untuk proyek berikutnya."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-pink-400 to-rose-600 flex items-center justify-center text-white font-bold flex-shrink-0">S</div>
+            <div>
+              <p class="font-bold text-gray-800 text-sm">Sari Dewi Lestari</p>
+              <p class="text-gray-400 text-xs">Pemilik Bisnis Fashion Online — Jakarta</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimoni 3 -->
+        <div class="testimonial-card reveal delay-200 bg-white rounded-3xl p-7 card-shadow border border-gray-100">
+          <div class="flex items-center gap-1 mb-5 text-yellow-400">
+            <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+            <i class="fa-solid fa-star text-sm"></i><i class="fa-solid fa-star text-sm"></i>
+            <i class="fa-solid fa-star-half-stroke text-sm"></i>
+          </div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-6 italic">
+            "Sistem manajemen klinik yang dibuat benar-benar sesuai dengan kebutuhan kami. Responsif, cepat, dan mudah digunakan staf. Tim sangat kooperatif dan revisi ditangani dengan cepat. Sangat puas dengan hasilnya — highly recommended!"
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-emerald-400 to-teal-700 flex items-center justify-center text-white font-bold flex-shrink-0">B</div>
+            <div>
+              <p class="font-bold text-gray-800 text-sm">dr. Budi Santoso</p>
+              <p class="text-gray-400 text-xs">Pemilik Klinik Sehat Bersama — Surabaya</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       KONTAK / ORDER SECTION
+  ===================================================== -->
+  <section id="kontak" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-14 items-start">
+
+        <!-- Left: Info & Contact -->
+        <div>
+          <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-primary-700 text-sm font-semibold mb-6 border border-blue-100 reveal">
+            <i class="fa-solid fa-envelope mr-1.5"></i> Kontak &amp; Pemesanan
+          </span>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 reveal">
+            Siap Memulai<br />
+            <span class="gradient-text">Proyek Anda?</span>
+          </h2>
+          <p class="text-gray-500 text-lg leading-relaxed mb-8 reveal">
+            Ceritakan kebutuhan Anda dan kami akan segera memberikan solusi terbaik. Konsultasi awal sepenuhnya <strong>gratis</strong> — tidak ada komitmen apa pun.
+          </p>
+
+          <!-- Contact Cards -->
+          <div class="space-y-4 mb-8">
+            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer"
+               class="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:border-green-200 hover:bg-green-50 transition-all duration-300 reveal group">
+              <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0">
+                <i class="fa-brands fa-whatsapp text-green-600 text-2xl"></i>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-0.5">WhatsApp (Respon Cepat)</p>
+                <p class="font-bold text-gray-800 group-hover:text-green-700 transition-colors">+62 812-3456-7890</p>
+              </div>
+              <i class="fa-solid fa-chevron-right ml-auto text-gray-300 group-hover:text-green-400 text-sm transition-colors"></i>
+            </a>
+
+            <a href="mailto:hello@jasaitskripsi.com"
+               class="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:border-blue-200 hover:bg-blue-50 transition-all duration-300 reveal group">
+              <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-envelope text-primary-700 text-xl"></i>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-0.5">Email</p>
+                <p class="font-bold text-gray-800 group-hover:text-primary-700 transition-colors">hello@jasaitskripsi.com</p>
+              </div>
+              <i class="fa-solid fa-chevron-right ml-auto text-gray-300 group-hover:text-primary-400 text-sm transition-colors"></i>
+            </a>
+
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+               class="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100 hover:border-purple-200 hover:bg-purple-50 transition-all duration-300 reveal group">
+              <div class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center flex-shrink-0">
+                <i class="fa-brands fa-instagram text-purple-600 text-xl"></i>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-0.5">Instagram</p>
+                <p class="font-bold text-gray-800 group-hover:text-purple-700 transition-colors">@jasait.skripsi</p>
+              </div>
+              <i class="fa-solid fa-chevron-right ml-auto text-gray-300 group-hover:text-purple-400 text-sm transition-colors"></i>
+            </a>
+          </div>
+
+          <!-- Working Hours -->
+          <div class="p-5 rounded-2xl bg-blue-50 border border-blue-100 reveal">
+            <div class="flex items-center gap-2 mb-4">
+              <i class="fa-solid fa-clock text-primary-700"></i>
+              <p class="font-bold text-primary-800 text-sm">Jam Operasional</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <p class="text-gray-400 text-xs mb-1">Senin — Sabtu</p>
+                <p class="font-bold text-gray-800">08.00 — 22.00 WIB</p>
+              </div>
+              <div>
+                <p class="text-gray-400 text-xs mb-1">Minggu / Libur</p>
+                <p class="font-bold text-gray-800">09.00 — 18.00 WIB</p>
+              </div>
+            </div>
+            <p class="text-primary-700 text-xs mt-4 font-semibold">
+              <i class="fa-solid fa-circle-check mr-1.5 text-green-500"></i>
+              Pesan di luar jam kerja? Kami tetap baca pesan Anda!
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Order Form -->
+        <div class="bg-white rounded-3xl p-8 border border-gray-100 card-shadow reveal-right">
+          <h3 class="text-xl font-bold text-gray-900 mb-7 flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-xl bg-primary-100 flex items-center justify-center">
+              <i class="fa-solid fa-paper-plane text-primary-700 text-sm"></i>
+            </span>
+            Formulir Pemesanan
+          </h3>
+
           <form id="order-form" class="space-y-5" novalidate>
+
             <!-- Nama -->
             <div>
-              <label class="form-label block text-sm font-semibold text-gray-700 mb-1.5" for="nama">Nama Lengkap <span class="text-red-500">*</span></label>
+              <label for="nama" class="form-label block text-sm font-semibold text-gray-700 mb-1.5">
+                Nama Lengkap <span class="text-red-500">*</span>
+              </label>
               <input type="text" id="nama" name="nama" required
-                class="form-input w-full border border-gray-200 rounded-xl px-4 py-3 text-sm bg-white placeholder-gray-400 focus:border-blue-500"
-                placeholder="Contoh: Budi Santoso" />
+                     placeholder="Contoh: Budi Santoso"
+                     class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 text-sm placeholder-gray-400 focus:bg-white" />
             </div>
 
-            <!-- WhatsApp -->
-            <div>
-              <label class="form-label block text-sm font-semibold text-gray-700 mb-1.5" for="wa">Nomor WhatsApp <span class="text-red-500">*</span></label>
-              <input type="tel" id="wa" name="wa" required
-                class="form-input w-full border border-gray-200 rounded-xl px-4 py-3 text-sm bg-white placeholder-gray-400 focus:border-blue-500"
-                placeholder="08xxxxxxxxxx" />
-            </div>
-
-            <!-- Email -->
-            <div>
-              <label class="form-label block text-sm font-semibold text-gray-700 mb-1.5" for="email">Email <span class="text-red-500">*</span></label>
-              <input type="email" id="email" name="email" required
-                class="form-input w-full border border-gray-200 rounded-xl px-4 py-3 text-sm bg-white placeholder-gray-400 focus:border-blue-500"
-                placeholder="nama@email.com" />
+            <!-- WA & Email row -->
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label for="whatsapp" class="form-label block text-sm font-semibold text-gray-700 mb-1.5">
+                  Nomor WhatsApp <span class="text-red-500">*</span>
+                </label>
+                <div class="relative">
+                  <span class="absolute left-3 top-1/2 -translate-y-1/2">
+                    <i class="fa-brands fa-whatsapp text-green-500 text-base"></i>
+                  </span>
+                  <input type="tel" id="whatsapp" name="whatsapp" required
+                         placeholder="08xxxxxxxxxx"
+                         class="form-input w-full pl-9 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 text-sm placeholder-gray-400 focus:bg-white" />
+                </div>
+              </div>
+              <div>
+                <label for="email" class="form-label block text-sm font-semibold text-gray-700 mb-1.5">
+                  Email <span class="text-red-500">*</span>
+                </label>
+                <div class="relative">
+                  <span class="absolute left-3 top-1/2 -translate-y-1/2">
+                    <i class="fa-solid fa-envelope text-primary-400 text-sm"></i>
+                  </span>
+                  <input type="email" id="email" name="email" required
+                         placeholder="email@anda.com"
+                         class="form-input w-full pl-9 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 text-sm placeholder-gray-400 focus:bg-white" />
+                </div>
+              </div>
             </div>
 
             <!-- Jenis Layanan -->
             <div>
-              <label class="form-label block text-sm font-semibold text-gray-700 mb-1.5" for="layanan">Jenis Layanan <span class="text-red-500">*</span></label>
-              <select id="layanan" name="layanan" required
-                class="form-input w-full border border-gray-200 rounded-xl px-4 py-3 text-sm bg-white text-gray-700 focus:border-blue-500">
-                <option value="" disabled selected>Pilih layanan yang dibutuhkan...</option>
-                <option value="web-app">Pembuatan Aplikasi Web</option>
-                <option value="landing-page">Pembuatan Landing Page</option>
-                <option value="skripsi">Bantu Skripsi / Tugas Akhir</option>
-                <option value="konsultasi">Konsultasi IT</option>
-                <option value="lainnya">Lainnya</option>
-              </select>
+              <label for="layanan" class="form-label block text-sm font-semibold text-gray-700 mb-1.5">
+                Jenis Layanan <span class="text-red-500">*</span>
+              </label>
+              <div class="relative">
+                <select id="layanan" name="layanan" required
+                        class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 text-sm appearance-none focus:bg-white cursor-pointer">
+                  <option value="" disabled selected>-- Pilih jenis layanan --</option>
+                  <optgroup label="Jasa IT">
+                    <option value="Pembuatan Aplikasi Web">Pembuatan Aplikasi Web</option>
+                    <option value="Pembuatan Landing Page">Pembuatan Landing Page</option>
+                    <option value="Konsultasi IT">Konsultasi IT</option>
+                  </optgroup>
+                  <optgroup label="Jasa Skripsi / Tugas Akhir">
+                    <option value="Bantu Skripsi Penuh (Bab I–V)">Bantu Skripsi Penuh (Bab I–V)</option>
+                    <option value="Bantu Per Bab Skripsi">Bantu Per Bab Skripsi</option>
+                    <option value="Implementasi Sistem Skripsi">Implementasi Sistem / Kode Skripsi</option>
+                  </optgroup>
+                  <optgroup label="Paket Bundling">
+                    <option value="Paket Enterprise (Skripsi + Aplikasi)">Paket Enterprise (Skripsi + Aplikasi)</option>
+                  </optgroup>
+                </select>
+                <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+              </div>
             </div>
 
             <!-- Deskripsi -->
             <div>
-              <label class="form-label block text-sm font-semibold text-gray-700 mb-1.5" for="deskripsi">Deskripsi Kebutuhan <span class="text-red-500">*</span></label>
-              <textarea id="deskripsi" name="deskripsi" rows="4" required
-                class="form-input w-full border border-gray-200 rounded-xl px-4 py-3 text-sm bg-white placeholder-gray-400 focus:border-blue-500 resize-none"
-                placeholder="Ceritakan secara singkat apa yang Anda butuhkan, deadline, dan anggaran yang dimiliki..."></textarea>
+              <label for="deskripsi" class="form-label block text-sm font-semibold text-gray-700 mb-1.5">
+                Deskripsi Kebutuhan <span class="text-red-500">*</span>
+              </label>
+              <textarea id="deskripsi" name="deskripsi" rows="5" required
+                        placeholder="Ceritakan detail kebutuhan Anda: tema skripsi, fitur aplikasi, deadline, referensi, anggaran, dll."
+                        class="form-input w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-800 text-sm placeholder-gray-400 focus:bg-white resize-none"></textarea>
+              <p class="text-gray-400 text-xs mt-1.5">Semakin detail, semakin akurat penawaran yang kami berikan.</p>
             </div>
 
-            <!-- Submit -->
-            <button type="submit" class="btn-submit w-full text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 text-sm">
-              <i class="fa-solid fa-paper-plane"></i>
-              Kirim Pesan & Mulai Konsultasi
+            <!-- Submit Button -->
+            <button type="submit"
+                    class="btn-submit w-full py-4 rounded-2xl text-white font-bold text-base shadow-xl">
+              <span class="relative z-10 flex items-center justify-center gap-2.5">
+                <i class="fa-solid fa-paper-plane"></i>
+                Kirim Pesan &amp; Dapatkan Penawaran
+              </span>
             </button>
 
             <p class="text-center text-gray-400 text-xs">
-              <i class="fa-solid fa-lock mr-1"></i>
-              Data Anda aman dan tidak akan disalahgunakan
+              <i class="fa-solid fa-lock mr-1 text-gray-300"></i>
+              Data Anda aman. Tidak ada spam, tidak ada penjualan data.
             </p>
           </form>
 
-          <!-- Success Message (hidden by default) -->
-          <div id="success-msg" class="hidden text-center py-6">
-            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fa-solid fa-circle-check text-green-600 text-3xl"></i>
-            </div>
-            <h4 class="text-lg font-bold text-gray-900 mb-2">Pesan Terkirim!</h4>
-            <p class="text-gray-500 text-sm">Terima kasih, kami akan menghubungi Anda via WhatsApp dalam waktu kurang dari 1 jam.</p>
+          <!-- Success State (hidden by default) -->
+          <div id="success-msg" class="hidden mt-4 p-6 rounded-2xl bg-green-50 border border-green-200 text-center">
+            <i class="fa-solid fa-circle-check text-green-500 text-4xl mb-3"></i>
+            <p class="font-bold text-green-800 text-lg mb-2">Pesan Berhasil Terkirim!</p>
+            <p class="text-green-600 text-sm leading-relaxed">
+              Terima kasih! Kami akan segera menghubungi Anda melalui WhatsApp dalam waktu 1&times;24 jam kerja.
+            </p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="bg-gradient-to-br from-blue-900 to-blue-800 text-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
+  <footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid md:grid-cols-4 gap-10 mb-12">
 
-        <!-- Brand -->
-        <div>
-          <div class="flex items-center gap-2 mb-4">
-            <div class="w-9 h-9 bg-white/20 rounded-lg flex items-center justify-center">
+        <!-- Brand Column -->
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-2.5 mb-5">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-800 flex items-center justify-center shadow-lg">
               <i class="fa-solid fa-code text-white text-sm"></i>
             </div>
-            <span class="font-bold text-xl">JasaIT<span class="text-blue-300">&</span>Skripsi</span>
+            <span class="text-xl font-extrabold tracking-tight">JasaIT <span class="text-blue-400">&amp;</span> Skripsi</span>
           </div>
-          <p class="text-blue-200 text-sm leading-relaxed mb-5">Solusi terpercaya untuk kebutuhan aplikasi web dan skripsi Anda. Profesional, tepat waktu, dan harga terjangkau.</p>
-          <div class="flex gap-3">
-            <a href="https://wa.me/6281234567890" class="social-icon" aria-label="WhatsApp">
-              <i class="fa-brands fa-whatsapp"></i>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
+            Mitra terpercaya untuk kebutuhan IT profesional dan pendampingan skripsi / tugas akhir Anda. Berkomitmen pada kualitas, kecepatan, dan kepuasan klien.
+          </p>
+          <!-- Social Icons -->
+          <div class="flex items-center gap-3">
+            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer"
+               class="social-icon hover:bg-green-500" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
             </a>
-            <a href="#" class="social-icon" aria-label="Instagram">
-              <i class="fa-brands fa-instagram"></i>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+               class="social-icon" style="transition:background .3s ease,transform .3s ease" aria-label="Instagram">
+              <i class="fa-brands fa-instagram text-lg"></i>
             </a>
-            <a href="#" class="social-icon" aria-label="GitHub">
-              <i class="fa-brands fa-github"></i>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+               class="social-icon hover:bg-gray-700" aria-label="GitHub">
+              <i class="fa-brands fa-github text-lg"></i>
             </a>
           </div>
         </div>
 
-        <!-- Layanan -->
+        <!-- Layanan Links -->
         <div>
-          <h4 class="font-bold text-white mb-4">Layanan</h4>
-          <ul class="space-y-2.5">
-            <li><a href="#layanan" class="footer-link text-blue-200 text-sm">Pembuatan Aplikasi Web</a></li>
-            <li><a href="#layanan" class="footer-link text-blue-200 text-sm">Landing Page</a></li>
-            <li><a href="#layanan" class="footer-link text-blue-200 text-sm">Bantu Skripsi</a></li>
-            <li><a href="#layanan" class="footer-link text-blue-200 text-sm">Konsultasi IT</a></li>
-          </ul>
-        </div>
-
-        <!-- Kontak -->
-        <div>
-          <h4 class="font-bold text-white mb-4">Kontak</h4>
+          <h4 class="text-white font-bold mb-5 text-sm uppercase tracking-widest">Layanan</h4>
           <ul class="space-y-3">
-            <li class="flex items-center gap-3 text-blue-200 text-sm">
-              <i class="fa-brands fa-whatsapp text-green-400 w-4"></i>
-              +62 812-3456-7890
-            </li>
-            <li class="flex items-center gap-3 text-blue-200 text-sm">
-              <i class="fa-regular fa-envelope text-blue-300 w-4"></i>
-              jasait.skripsi@gmail.com
-            </li>
-            <li class="flex items-center gap-3 text-blue-200 text-sm">
-              <i class="fa-brands fa-instagram text-pink-300 w-4"></i>
-              @jasait.skripsi
-            </li>
+            <li><a href="#layanan" class="footer-link text-gray-400 text-sm">Pembuatan Aplikasi Web</a></li>
+            <li><a href="#layanan" class="footer-link text-gray-400 text-sm">Pembuatan Landing Page</a></li>
+            <li><a href="#layanan" class="footer-link text-gray-400 text-sm">Bantu Skripsi / TA</a></li>
+            <li><a href="#layanan" class="footer-link text-gray-400 text-sm">Konsultasi IT</a></li>
+            <li><a href="#harga" class="footer-link text-gray-400 text-sm">Paket Enterprise</a></li>
           </ul>
         </div>
 
+        <!-- Info Links -->
+        <div>
+          <h4 class="text-white font-bold mb-5 text-sm uppercase tracking-widest">Informasi</h4>
+          <ul class="space-y-3">
+            <li><a href="#harga" class="footer-link text-gray-400 text-sm">Paket &amp; Harga</a></li>
+            <li><a href="#portofolio" class="footer-link text-gray-400 text-sm">Portofolio</a></li>
+            <li><a href="#kontak" class="footer-link text-gray-400 text-sm">Cara Pemesanan</a></li>
+            <li>
+              <a href="https://wa.me/6281234567890?text=Halo%2C%20ingin%20konsultasi%20gratis"
+                 target="_blank" rel="noopener noreferrer"
+                 class="footer-link text-gray-400 text-sm">Konsultasi Gratis</a>
+            </li>
+          </ul>
+        </div>
       </div>
+    </div>
 
-      <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-blue-300">
-        <span>&copy; 2025 JasaIT &amp; Skripsi. All rights reserved.</span>
-        <div class="flex gap-4">
-          <a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a>
-          <a href="#" class="hover:text-white transition-colors">Syarat & Ketentuan</a>
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p class="text-gray-500 text-sm">
+          &copy; 2025 <span class="text-gray-300 font-semibold">JasaIT &amp; Skripsi</span>. Semua hak dilindungi.
+        </p>
+        <div class="flex items-center gap-4 text-xs text-gray-500">
+          <a href="#" class="hover:text-gray-300 transition-colors">Kebijakan Privasi</a>
+          <span class="text-gray-700">&#183;</span>
+          <a href="#" class="hover:text-gray-300 transition-colors">Syarat &amp; Ketentuan</a>
+          <span class="text-gray-700">&#183;</span>
+          <a href="#kontak" class="hover:text-gray-300 transition-colors">Kontak</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- ===== FLOATING WHATSAPP ===== -->
-  <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20konsultasi%20tentang%20layanan%20Anda" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
-    <span class="whatsapp-tooltip">Chat via WhatsApp</span>
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-  <!-- ===== SCRIPTS ===== -->
+  <!-- =====================================================
+       JAVASCRIPT
+  ===================================================== -->
   <script>
-    // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
+    /* -------------------------------------------------------
+       Navbar: scroll effect + text color switching
+    ------------------------------------------------------- */
+    const navbar   = document.getElementById('navbar');
+    const logoText = document.getElementById('logo-text');
+    const navLinks = document.querySelectorAll('nav .nav-link');
+
+    function updateNavbar() {
+      const scrolled = window.scrollY > 60;
+      if (scrolled) {
         navbar.classList.add('navbar-scrolled');
+        logoText.classList.remove('text-white', 'drop-shadow');
+        logoText.classList.add('text-primary-900');
+        navLinks.forEach(l => {
+          l.classList.remove('text-white/90', 'hover:text-white');
+          l.classList.add('text-gray-700', 'hover:text-primary-800');
+        });
       } else {
         navbar.classList.remove('navbar-scrolled');
+        logoText.classList.add('text-white', 'drop-shadow');
+        logoText.classList.remove('text-primary-900');
+        navLinks.forEach(l => {
+          l.classList.add('text-white/90', 'hover:text-white');
+          l.classList.remove('text-gray-700', 'hover:text-primary-800');
+        });
       }
-    });
+    }
 
-    // Hamburger menu
+    window.addEventListener('scroll', updateNavbar, { passive: true });
+    updateNavbar();
+
+    /* -------------------------------------------------------
+       Mobile Menu Toggle
+    ------------------------------------------------------- */
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
     const ham1 = document.getElementById('ham-1');
@@ -683,23 +1232,24 @@
     hamburger.addEventListener('click', () => {
       menuOpen = !menuOpen;
       mobileMenu.classList.toggle('open', menuOpen);
-      ham2.style.opacity = menuOpen ? '0' : '1';
+      ham2.style.opacity  = menuOpen ? '0' : '1';
       ham1.style.transform = menuOpen ? 'rotate(45deg) translate(5px, 5px)' : '';
       ham3.style.transform = menuOpen ? 'rotate(-45deg) translate(5px, -5px)' : '';
     });
 
-    // Close mobile menu on link click
     document.querySelectorAll('.mobile-nav-link').forEach(link => {
       link.addEventListener('click', () => {
         menuOpen = false;
         mobileMenu.classList.remove('open');
-        ham2.style.opacity = '1';
+        ham2.style.opacity  = '1';
         ham1.style.transform = '';
         ham3.style.transform = '';
       });
     });
 
-    // Scroll reveal animation
+    /* -------------------------------------------------------
+       Scroll Reveal — Intersection Observer
+    ------------------------------------------------------- */
     const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -708,53 +1258,104 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     revealEls.forEach(el => revealObserver.observe(el));
 
-    // Active nav link on scroll
+    /* -------------------------------------------------------
+       Active Nav Link on Scroll
+    ------------------------------------------------------- */
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    const activeObserver = new IntersectionObserver((entries) => {
+    const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          const id = entry.target.id;
           navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
           });
         }
       });
-    }, { threshold: 0.4 });
+    }, { threshold: 0.35 });
 
-    sections.forEach(s => activeObserver.observe(s));
+    sections.forEach(s => sectionObserver.observe(s));
 
-    // Form submit handler
-    document.getElementById('order-form').addEventListener('submit', function(e) {
+    /* -------------------------------------------------------
+       Smooth Scroll for all anchor links
+    ------------------------------------------------------- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#' || href === '#!') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const offset = 72;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    /* -------------------------------------------------------
+       Order Form Submission
+    ------------------------------------------------------- */
+    const form       = document.getElementById('order-form');
+    const successMsg = document.getElementById('success-msg');
+
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
-      const form = this;
-      const btn = form.querySelector('button[type="submit"]');
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
 
-      // Simulate sending (replace with real backend/WhatsApp redirect)
+      // Validate required fields
+      const required = form.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(field => {
+        if (!field.value.trim()) {
+          field.classList.add('border-red-400', 'bg-red-50');
+          field.addEventListener('input', () => {
+            field.classList.remove('border-red-400', 'bg-red-50');
+          }, { once: true });
+          valid = false;
+        }
+      });
+      if (!valid) return;
+
+      // Collect values
+      const nama      = document.getElementById('nama').value.trim();
+      const wa        = document.getElementById('whatsapp').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const layanan   = document.getElementById('layanan').value;
+      const deskripsi = document.getElementById('deskripsi').value.trim();
+
+      // Show loading state
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="relative z-10 flex items-center justify-center gap-2"><i class="fa-solid fa-spinner fa-spin"></i> Mengirim...</span>';
+
+      // Build WhatsApp message
+      const waMsg = encodeURIComponent(
+        `Halo JasaIT & Skripsi!\n\n` +
+        `Saya ingin memesan layanan berikut:\n\n` +
+        `*Nama:* ${nama}\n` +
+        `*Email:* ${email}\n` +
+        `*No. WA:* ${wa}\n` +
+        `*Layanan:* ${layanan}\n\n` +
+        `*Deskripsi Kebutuhan:*\n${deskripsi}\n\n` +
+        `Mohon informasi lebih lanjut. Terima kasih!`
+      );
+
+      // Simulate brief delay then show success
       setTimeout(() => {
-        const nama = document.getElementById('nama').value;
-        const wa = document.getElementById('wa').value;
-        const layanan = document.getElementById('layanan').value;
-        const deskripsi = document.getElementById('deskripsi').value;
-
-        const waText = encodeURIComponent(
-          `Halo, saya ${nama}.\n\nSaya ingin memesan layanan: ${layanan}\n\nDeskripsi: ${deskripsi}\n\nNomor WA: ${wa}`
-        );
-
-        form.style.display = 'none';
-        document.getElementById('success-msg').classList.remove('hidden');
-
-        // Open WhatsApp
-        window.open(`https://wa.me/6281234567890?text=${waText}`, '_blank');
-      }, 1200);
+        form.style.transition = 'opacity 0.4s ease';
+        form.style.opacity = '0';
+        setTimeout(() => {
+          form.style.display = 'none';
+          successMsg.classList.remove('hidden');
+          successMsg.classList.add('animate-scale-in');
+          // Open WhatsApp in new tab
+          window.open(`https://wa.me/6281234567890?text=${waMsg}`, '_blank');
+        }, 400);
+      }, 1000);
     });
   </script>
-
 </body>
 </html>
