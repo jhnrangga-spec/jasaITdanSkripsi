@@ -1096,8 +1096,6 @@
             </p>
           </form>
 
-          <!-- Success State placeholder (tidak dipakai, popup dipakai sebagai gantinya) -->
-          <div id="success-msg" class="hidden"></div>
         </div>
       </div>
     </div>
@@ -1376,8 +1374,15 @@
     if (EMAILJS_READY) emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
     // ────────────────────────────────────────────────────────
 
-    const form       = document.getElementById('order-form');
-    const successMsg = document.getElementById('success-msg');
+    const form = document.getElementById('order-form');
+
+    // Helper: batalkan promise jika melebihi batas waktu
+    function withTimeout(promise, ms) {
+      return Promise.race([
+        promise,
+        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms))
+      ]);
+    }
 
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -1403,32 +1408,40 @@
       const layanan   = document.getElementById('layanan').value;
       const deskripsi = document.getElementById('deskripsi').value.trim();
 
-      // Show loading state
+      // Disable seluruh form selama proses kirim (cegah double-submit)
+      const allFields = form.querySelectorAll('input, select, textarea, button');
+      allFields.forEach(f => f.disabled = true);
+
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalBtnHTML = submitBtn.innerHTML;
-      submitBtn.disabled = true;
       submitBtn.innerHTML = '<span class="relative z-10 flex items-center justify-center gap-2"><i class="fa-solid fa-spinner fa-spin"></i> Mengirim...</span>';
 
       try {
-        // Save order to Supabase
+        // Simpan order ke Supabase (timeout 10 detik)
         if (supabaseClient) {
-          const { error } = await supabaseClient.from('orders').insert([{
-            nama, whatsapp: wa, email, layanan, deskripsi, status: 'baru'
-          }]);
-          if (error) console.error('Supabase error:', error.message);
+          const { error } = await withTimeout(
+            supabaseClient.from('orders').insert([{
+              nama, whatsapp: wa, email, layanan, deskripsi, status: 'baru'
+            }]),
+            10000
+          ).catch(err => { console.error('Supabase error:', err.message); return {}; });
+          if (error) console.error('Supabase insert error:', error.message);
         }
 
-        // Kirim notifikasi email via EmailJS
+        // Kirim notifikasi email via EmailJS (timeout 10 detik)
         if (EMAILJS_READY) {
-          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-            owner_email: 'abdulhasibuan27@gmail.com',
-            nama,
-            whatsapp: wa,
-            email_klien: email,
-            layanan,
-            deskripsi,
-            waktu: new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })
-          }).catch(err => console.error('EmailJS error:', err.message || err.text || err));
+          await withTimeout(
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+              owner_email: 'abdulhasibuan27@gmail.com',
+              nama,
+              whatsapp: wa,
+              email_klien: email,
+              layanan,
+              deskripsi,
+              waktu: new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })
+            }),
+            10000
+          ).catch(err => console.error('EmailJS error:', err.message || err.text || err));
         }
 
         // Build WhatsApp message
@@ -1451,14 +1464,14 @@
         document.getElementById('popup-wa-btn').onclick = () => window.open(waUrl, '_blank');
         openOrderPopup();
 
-        // Reset form di background
+        // Reset form setelah popup terbuka
         form.reset();
-        submitBtn.disabled = false;
+        allFields.forEach(f => f.disabled = false);
         submitBtn.innerHTML = originalBtnHTML;
 
       } catch (err) {
         console.error('Form submit error:', err);
-        submitBtn.disabled = false;
+        allFields.forEach(f => f.disabled = false);
         submitBtn.innerHTML = originalBtnHTML;
         alert('Terjadi kesalahan. Silakan coba lagi atau hubungi kami via WhatsApp.');
       }
@@ -1482,7 +1495,8 @@
       card.classList.replace('scale-100', 'scale-90');
       popup.classList.remove('pointer-events-auto', 'opacity-100');
       popup.classList.add('pointer-events-none', 'opacity-0');
-      document.body.style.overflow = '';
+      // Tunggu transisi selesai (300ms) sebelum restore scroll
+      setTimeout(() => { document.body.style.overflow = ''; }, 300);
     }
 
     // Tutup popup dengan tombol Escape

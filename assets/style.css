@@ -301,9 +301,6 @@ html {
   background-clip: text;
 }
 
-.price-amount-white {
-  color: white;
-}
 
 /* ===========================
    Portfolio Cards
@@ -616,14 +613,6 @@ html {
 }
 
 /* ===========================
-   Loading Skeleton (optional)
-   =========================== */
-@keyframes skeleton-loading {
-  0% { background-position: -200px 0; }
-  100% { background-position: calc(200px + 100%) 0; }
-}
-
-/* ===========================
    Utility
    =========================== */
 .gradient-text {
@@ -633,16 +622,8 @@ html {
   background-clip: text;
 }
 
-.blue-glow {
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
-}
-
 .card-shadow {
   box-shadow: 0 4px 20px rgba(30, 64, 175, 0.08);
-}
-
-.card-shadow-hover:hover {
-  box-shadow: 0 12px 40px rgba(30, 64, 175, 0.18);
 }
 
 /* ===========================
