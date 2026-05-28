@@ -45,6 +45,9 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/style.css" />
+
+  <!-- Supabase JS v2 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="font-sans antialiased bg-white text-gray-800">
 
@@ -1299,10 +1302,18 @@
     /* -------------------------------------------------------
        Order Form Submission
     ------------------------------------------------------- */
+    // ── Supabase config ─────────────────────────────────────
+    // Ganti dua nilai di bawah dengan URL & anon key project Supabase Anda
+    const SUPABASE_URL      = 'GANTI_DENGAN_SUPABASE_URL';
+    const SUPABASE_ANON_KEY = 'GANTI_DENGAN_SUPABASE_ANON_KEY';
+
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    // ────────────────────────────────────────────────────────
+
     const form       = document.getElementById('order-form');
     const successMsg = document.getElementById('success-msg');
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
 
       // Validate required fields
@@ -1331,6 +1342,21 @@
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span class="relative z-10 flex items-center justify-center gap-2"><i class="fa-solid fa-spinner fa-spin"></i> Mengirim...</span>';
 
+      // Save order to Supabase
+      const { error } = await supabase.from('orders').insert([{
+        nama,
+        whatsapp: wa,
+        email,
+        layanan,
+        deskripsi,
+        status: 'baru'
+      }]);
+
+      if (error) {
+        console.error('Supabase error:', error.message);
+        // Tetap lanjut ke WhatsApp meski Supabase gagal
+      }
+
       // Build WhatsApp message
       const waMsg = encodeURIComponent(
         `Halo JasaIT & Skripsi!\n\n` +
@@ -1343,18 +1369,14 @@
         `Mohon informasi lebih lanjut. Terima kasih!`
       );
 
-      // Simulate brief delay then show success
+      form.style.transition = 'opacity 0.4s ease';
+      form.style.opacity = '0';
       setTimeout(() => {
-        form.style.transition = 'opacity 0.4s ease';
-        form.style.opacity = '0';
-        setTimeout(() => {
-          form.style.display = 'none';
-          successMsg.classList.remove('hidden');
-          successMsg.classList.add('animate-scale-in');
-          // Open WhatsApp in new tab
-          window.open(`https://wa.me/6281234567890?text=${waMsg}`, '_blank');
-        }, 400);
-      }, 1000);
+        form.style.display = 'none';
+        successMsg.classList.remove('hidden');
+        successMsg.classList.add('animate-scale-in');
+        window.open(`https://wa.me/6281234567890?text=${waMsg}`, '_blank');
+      }, 400);
     });
   </script>
 </body>
