@@ -48,6 +48,9 @@
 
   <!-- Supabase JS v2 -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body class="font-sans antialiased bg-white text-gray-800">
 
@@ -1303,11 +1306,16 @@
        Order Form Submission
     ------------------------------------------------------- */
     // ── Supabase config ─────────────────────────────────────
-    // Ganti dua nilai di bawah dengan URL & anon key project Supabase Anda
     const SUPABASE_URL      = 'GANTI_DENGAN_SUPABASE_URL';
     const SUPABASE_ANON_KEY = 'GANTI_DENGAN_SUPABASE_ANON_KEY';
-
     const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // ── EmailJS config ───────────────────────────────────────
+    // Daftar di emailjs.com lalu isi tiga nilai di bawah
+    const EMAILJS_PUBLIC_KEY  = 'GANTI_DENGAN_EMAILJS_PUBLIC_KEY';
+    const EMAILJS_SERVICE_ID  = 'GANTI_DENGAN_EMAILJS_SERVICE_ID';
+    const EMAILJS_TEMPLATE_ID = 'GANTI_DENGAN_EMAILJS_TEMPLATE_ID';
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
     // ────────────────────────────────────────────────────────
 
     const form       = document.getElementById('order-form');
@@ -1354,8 +1362,18 @@
 
       if (error) {
         console.error('Supabase error:', error.message);
-        // Tetap lanjut ke WhatsApp meski Supabase gagal
       }
+
+      // Kirim notifikasi email ke pemilik via EmailJS
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        owner_email: 'abdulhasibuan27@gmail.com',
+        nama,
+        whatsapp: wa,
+        email_klien: email,
+        layanan,
+        deskripsi,
+        waktu: new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })
+      }).catch(err => console.error('EmailJS error:', err.text));
 
       // Build WhatsApp message
       const waMsg = encodeURIComponent(
