@@ -7,8 +7,7 @@
   <meta name="keywords" content="jasa web, jasa skripsi, jasa aplikasi web, bantu skripsi, jasa IT, landing page, pembuatan website" />
   <title>JasaIT &amp; Skripsi — Solusi IT &amp; Akademik Profesional</title>
 
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind config HARUS sebelum CDN agar dark colors & custom classes aktif -->
   <script>
     tailwind.config = {
       theme: {
@@ -40,6 +39,9 @@
       }
     }
   </script>
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Font Awesome 6 via CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
